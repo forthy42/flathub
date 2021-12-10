@@ -1,0 +1,24 @@
+app-id: org.gnu.gforth
+runtime: org.freedesktop.Platform
+platform-extensions:
+  - org.freedesktop.Platform.GL.default
+runtime-version: "21.08"
+branch: "21.08"
+sdk: org.freedesktop.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.stb
+command: gforth
+
+modules:
+  - name: gforth
+    buildsystem: autotools
+    config-opts:
+      - "CPPFLAGS=-I/usr/lib/sdk/stb/include"
+      - "--disable-lib"
+      - "--with-lispdir=/app/share/emacs/site-lisp"
+      - "--with-elispstartdir=/app/share/emacs/site-start.d"
+    no-autogen: true
+    sources:
+      - type: archive
+        url: https://www.complang.tuwien.ac.at/forth/gforth/Snapshots/0.7.9_20211209/gforth-0.7.9_20211209.tar.xz
+        sha256: 6809337dc3d2ddb4fdbfcd65b4257b8711b4bd67d06db98dd1db61d38392a901
